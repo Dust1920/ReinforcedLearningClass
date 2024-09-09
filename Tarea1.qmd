@@ -1,0 +1,82 @@
+# Tarea 1 (Fecha de Entrega 20 Septiembre 2024 12:00:00)
+
+:::{exr-1}
+Read (Sec 1.1, pp 1-2 Sutton and Barto 2018) and answer the following. Explain why Reinforcement Learning differs for supervised and unsupervised. 
+:::
+
+
+:::{exr-2}
+See the first Brunton's youtube about Reinforced Learning. Then acordingly to its presentation explain what is the meaning of the following expression.
+
+$$
+V_\pi(s) = E\left(\sum_t\gamma^tr_t\mid s_0=s\right)
+$$
+
+:::
+
+
+:::{exr-3}
+Form (see Sutton and Barto 2018, sec. 1.7) obtain a time line pear year from 1950 to 2012.
+:::
+
+
+:::{exr-4}
+Consider the following comsuption-saving problem with dynamics
+$$
+x_{k+1} = (1+r)(x_k-a_k), k = 0,1,\ldots,N-1
+$$
+
+and utility function
+
+$$
+\beta^N(x_N)^{1-\gamma} + \sum_{k=0}^{N-1}\beta^k(a_k)^{1-\gamma}.
+$$
+
+Show that the value functions of the DP alghorithm the form
+
+$$
+J_k(x) = A_kk\beta^k x^{1-\gamma},
+$$
+
+where $A_N=1$ and for $k=N-1,\ldots,0$,
+
+$$
+A_k = \left[1 + \left((1+r)\beta A_{k+1}\right)^{1/\gamma}\right]^\gamma.
+$$
+
+Show also that the optimal policies are $h_k(x) = A^{-1/\gamma}x$, for $k = N-1,\ldots,0$.
+:::
+
+
+:::{exr-5}
+Consider now the infinite-horizon version of the above compsumption problem.
+
+1. Write down the associated Bellman equation.
+2. Argue why a solution to the Bellman equation should be the form 
+
+$$
+v(x) = cx^{1-\gamma},
+$$
+
+where $c$ is constant. Find the constant $c$ and the stationary optimal policy. 
+
+:::
+
+
+:::{exr-6}
+Let $\{\xi_k\}$ be a dynamics of iid random variables such that $E\left[\xi\right] = 0$ and $E\left[\xi^2\right] = d$. Consider the dynamics
+$$
+x_{k+1} = x_k + a_k + \xi_k, k = 0,1,2,\ldots,
+$$
+
+and the discounted cost
+$$
+E\left[ \sum \beta^k \left(a^2_k + x_k^2\right)\right]
+$$
+
+1. Write down the associated Bellman equation.
+2. Conjecture that the solution to the Bellman equation takes the form $v(x) = ax^2 + b$, where $a$ and $b$ are constant.
+3. Determine the constants $a$ and $b$.
+4. Conjecture that the solution to the Bellman equation takes the form $v(x) = ax^2 + b$, where $a$ and $b$ are constant. Determine the constants $a$ and $b$.
+:::
+
