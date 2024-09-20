@@ -14,6 +14,12 @@ $$
 
 :::
 
+La expresión presentada en el video [Reinforcement Learning.](https://www.youtube.com/watch?v=0MNVhXEX9to&list=PLMrJAkhIeNNQe1JXNvaFvURxGY4gE9k74)
+$$
+V_\pi (s) = E\left[\left. \sum_{t}\gamma^t r_t \right| s_0 = s\right]
+$$
+
+hace referencia a la función de valor del problema de optimización representada por la recompensa esperada dado la politica $\pi$ y el estado inicial $s$. Aquí $\gamma$ es el factor de descuento y $r_t$ es la recompensa por etapa $t$. 
 
 :::{exr-3}
 Form (see Sutton and Barto 2018, sec. 1.7) obtain a time line pear year from 1950 to 2012.
