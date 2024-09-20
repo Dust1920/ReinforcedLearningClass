@@ -5,6 +5,11 @@ Read (Sec 1.1, pp 1-2 Sutton and Barto 2018) and answer the following. Explain w
 :::
 
 
+:::{#sol-s1}
+El aprendizaje supervisado requiere de ejemplos de soluciones. Mientras que el reforzado requiere una función de valor. 
+:::
+
+
 :::{#exr-2}
 
 See the first Brunton's youtube about Reinforced Learning. Then acordingly to its presentation explain what is the meaning of the following expression.
