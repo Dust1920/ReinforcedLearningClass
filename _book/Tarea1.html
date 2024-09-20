@@ -153,20 +153,26 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="{exr-1}">
-<p>Read (Sec 1.1, pp 1-2 Sutton and Barto 2018) and answer the following. Explain why Reinforcement Learning differs for supervised and unsupervised.</p>
+<div id="exr-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.1 </strong></span>Read (Sec 1.1, pp 1-2 Sutton and Barto 2018) and answer the following. Explain why Reinforcement Learning differs for supervised and unsupervised.</p>
 </div>
-<div class="{exr-2}">
-<p>See the first Brunton’s youtube about Reinforced Learning. Then acordingly to its presentation explain what is the meaning of the following expression.</p>
+<div id="exr-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.2 </strong></span>See the first Brunton’s youtube about Reinforced Learning. Then acordingly to its presentation explain what is the meaning of the following expression.</p>
 <p><span class="math display">\[
 V_\pi(s) = E\left(\sum_t\gamma^tr_t\mid s_0=s\right)
 \]</span></p>
 </div>
-<div class="{exr-3}">
-<p>Form (see Sutton and Barto 2018, sec.&nbsp;1.7) obtain a time line pear year from 1950 to 2012.</p>
+<div id="sol-2">
+<p>La expresión presentada en el video <a href="https://www.youtube.com/watch?v=0MNVhXEX9to&amp;list=PLMrJAkhIeNNQe1JXNvaFvURxGY4gE9k74">Reinforcement Learning.</a> <span class="math display">\[
+V_\pi (s) = E\left[\left. \sum_{t}\gamma^t r_t \right| s_0 = s\right]
+\]</span></p>
+<p>hace referencia a la función de valor del problema de optimización representada por la recompensa esperada dado la politica <span class="math inline">\(\pi\)</span> y el estado inicial <span class="math inline">\(s\)</span>. Aquí <span class="math inline">\(\gamma\)</span> es el factor de descuento y <span class="math inline">\(r_t\)</span> es la recompensa por etapa <span class="math inline">\(t\)</span>.</p>
 </div>
-<div class="{exr-4}">
-<p>Consider the following comsuption-saving problem with dynamics <span class="math display">\[
+<div id="exr-3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.3 </strong></span>Form (see Sutton and Barto 2018, sec.&nbsp;1.7) obtain a time line pear year from 1950 to 2012.</p>
+</div>
+<div id="exr-4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.4 </strong></span>Consider the following comsuption-saving problem with dynamics <span class="math display">\[
 x_{k+1} = (1+r)(x_k-a_k), k = 0,1,\ldots,N-1
 \]</span></p>
 <p>and utility function</p>
@@ -183,8 +189,8 @@ A_k = \left[1 + \left((1+r)\beta A_{k+1}\right)^{1/\gamma}\right]^\gamma.
 \]</span></p>
 <p>Show also that the optimal policies are <span class="math inline">\(h_k(x) = A^{-1/\gamma}x\)</span>, for <span class="math inline">\(k = N-1,\ldots,0\)</span>.</p>
 </div>
-<div class="{exr-5}">
-<p>Consider now the infinite-horizon version of the above compsumption problem.</p>
+<div id="exr-5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.5 </strong></span>Consider now the infinite-horizon version of the above compsumption problem.</p>
 <ol type="1">
 <li>Write down the associated Bellman equation.</li>
 <li>Argue why a solution to the Bellman equation should be the form</li>
@@ -194,8 +200,8 @@ v(x) = cx^{1-\gamma},
 \]</span></p>
 <p>where <span class="math inline">\(c\)</span> is constant. Find the constant <span class="math inline">\(c\)</span> and the stationary optimal policy.</p>
 </div>
-<div class="{exr-6}">
-<p>Let <span class="math inline">\(\{\xi_k\}\)</span> be a dynamics of iid random variables such that <span class="math inline">\(E\left[\xi\right] = 0\)</span> and <span class="math inline">\(E\left[\xi^2\right] = d\)</span>. Consider the dynamics <span class="math display">\[
+<div id="exr-6" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.6 </strong></span>Let <span class="math inline">\(\{\xi_k\}\)</span> be a dynamics of iid random variables such that <span class="math inline">\(E\left[\xi\right] = 0\)</span> and <span class="math inline">\(E\left[\xi^2\right] = d\)</span>. Consider the dynamics <span class="math display">\[
 x_{k+1} = x_k + a_k + \xi_k, k = 0,1,2,\ldots,
 \]</span></p>
 <p>and the discounted cost <span class="math display">\[

@@ -1,32 +1,38 @@
 # Tarea 1 (Fecha de Entrega 20 Septiembre 2024 12:00:00)
 
-:::{exr-1}
+:::{#exr-1}
 Read (Sec 1.1, pp 1-2 Sutton and Barto 2018) and answer the following. Explain why Reinforcement Learning differs for supervised and unsupervised. 
 :::
 
 
-:::{exr-2}
+:::{#exr-2}
+
 See the first Brunton's youtube about Reinforced Learning. Then acordingly to its presentation explain what is the meaning of the following expression.
 
 $$
 V_\pi(s) = E\left(\sum_t\gamma^tr_t\mid s_0=s\right)
 $$
-
 :::
+
+
+:::{#sol-2}
 
 La expresión presentada en el video [Reinforcement Learning.](https://www.youtube.com/watch?v=0MNVhXEX9to&list=PLMrJAkhIeNNQe1JXNvaFvURxGY4gE9k74)
 $$
 V_\pi (s) = E\left[\left. \sum_{t}\gamma^t r_t \right| s_0 = s\right]
 $$
 
-hace referencia a la función de valor del problema de optimización representada por la recompensa esperada dado la politica $\pi$ y el estado inicial $s$. Aquí $\gamma$ es el factor de descuento y $r_t$ es la recompensa por etapa $t$. 
+hace referencia a la función de valor del problema de optimización representada por la recompensa esperada dado la politica $\pi$ y el estado inicial $s$. Aquí $\gamma$ es el factor de descuento y $r_t$ es la recompensa por etapa $t$.
 
-:::{exr-3}
+:::
+
+
+:::{#exr-3}
 Form (see Sutton and Barto 2018, sec. 1.7) obtain a time line pear year from 1950 to 2012.
 :::
 
 
-:::{exr-4}
+:::{#exr-4}
 Consider the following comsuption-saving problem with dynamics
 $$
 x_{k+1} = (1+r)(x_k-a_k), k = 0,1,\ldots,N-1
@@ -54,7 +60,7 @@ Show also that the optimal policies are $h_k(x) = A^{-1/\gamma}x$, for $k = N-1,
 :::
 
 
-:::{exr-5}
+:::{#exr-5}
 Consider now the infinite-horizon version of the above compsumption problem.
 
 1. Write down the associated Bellman equation.
@@ -69,7 +75,7 @@ where $c$ is constant. Find the constant $c$ and the stationary optimal policy.
 :::
 
 
-:::{exr-6}
+:::{#exr-6}
 Let $\{\xi_k\}$ be a dynamics of iid random variables such that $E\left[\xi\right] = 0$ and $E\left[\xi^2\right] = d$. Consider the dynamics
 $$
 x_{k+1} = x_k + a_k + \xi_k, k = 0,1,2,\ldots,
