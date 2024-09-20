@@ -153,24 +153,26 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="{exr-1}">
-<p>Read (Sec 1.1, pp 1-2 Sutton and Barto 2018) and answer the following. Explain why Reinforcement Learning differs for supervised and unsupervised.</p>
+<div id="exr-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.1 </strong></span>Read (Sec 1.1, pp 1-2 Sutton and Barto 2018) and answer the following. Explain why Reinforcement Learning differs for supervised and unsupervised.</p>
 </div>
-<div class="{exr-2}">
-<p>See the first Brunton’s youtube about Reinforced Learning. Then acordingly to its presentation explain what is the meaning of the following expression.</p>
+<div id="exr-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.2 </strong></span>See the first Brunton’s youtube about Reinforced Learning. Then acordingly to its presentation explain what is the meaning of the following expression.</p>
 <p><span class="math display">\[
 V_\pi(s) = E\left(\sum_t\gamma^tr_t\mid s_0=s\right)
 \]</span></p>
 </div>
+<div id="sol-s2">
 <p>La expresión presentada en el video <a href="https://www.youtube.com/watch?v=0MNVhXEX9to&amp;list=PLMrJAkhIeNNQe1JXNvaFvURxGY4gE9k74">Reinforcement Learning.</a> <span class="math display">\[
 V_\pi (s) = E\left[\left. \sum_{t}\gamma^t r_t \right| s_0 = s\right]
 \]</span></p>
 <p>hace referencia a la función de valor del problema de optimización representada por la recompensa esperada dado la politica <span class="math inline">\(\pi\)</span> y el estado inicial <span class="math inline">\(s\)</span>. Aquí <span class="math inline">\(\gamma\)</span> es el factor de descuento y <span class="math inline">\(r_t\)</span> es la recompensa por etapa <span class="math inline">\(t\)</span>.</p>
-<div class="{exr-3}">
-<p>Form (see Sutton and Barto 2018, sec.&nbsp;1.7) obtain a time line pear year from 1950 to 2012.</p>
 </div>
-<div class="{exr-4}">
-<p>Consider the following comsuption-saving problem with dynamics <span class="math display">\[
+<div id="exr-3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.3 </strong></span>Form (see Sutton and Barto 2018, sec.&nbsp;1.7) obtain a time line pear year from 1950 to 2012.</p>
+</div>
+<div id="exr-4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.4 </strong></span>Consider the following comsuption-saving problem with dynamics <span class="math display">\[
 x_{k+1} = (1+r)(x_k-a_k), k = 0,1,\ldots,N-1
 \]</span></p>
 <p>and utility function</p>
@@ -187,8 +189,98 @@ A_k = \left[1 + \left((1+r)\beta A_{k+1}\right)^{1/\gamma}\right]^\gamma.
 \]</span></p>
 <p>Show also that the optimal policies are <span class="math inline">\(h_k(x) = A^{-1/\gamma}x\)</span>, for <span class="math inline">\(k = N-1,\ldots,0\)</span>.</p>
 </div>
-<div class="{exr-5}">
-<p>Consider now the infinite-horizon version of the above compsumption problem.</p>
+<div id="sol-4">
+<div id="sol-4">
+<p>Considerando <span class="math inline">\(J_{N}\)</span> como sigue</p>
+<p><span class="math display">\[
+J_{N}\left(x\right)=\beta^{N}x^{1-\gamma}K_{N},
+\]</span></p>
+<p>con <span class="math inline">\(K_{N}=1\)</span> bajo la hipótesis de que <span class="math display">\[
+c_{k}\left(x,a\right)=\beta^{k}a^{1-\gamma}
+\]</span> calculamos <span class="math inline">\(J_{N-1}\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+J_{N-1}\left(x\right) &amp; =\max_{a\in A\left(x\right)}\left\{ c_{N-1}(x,a)+J_{N}\left((1+i)(x-a)\right)\right\} \\
+&amp; =\max_{a\in A\left(x\right)}\left\{ \beta^{N-1}a^{1-\gamma}+\beta^{N}\left((1+i)(x-a)\right)^{1-\gamma}\right\}
+\end{align*}\]</span></p>
+<p>Definimos el argumento como una función <span class="math inline">\(q\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+q(x,a) &amp; =\beta^{N-1}a^{1-\gamma}+\beta^{N}\left((1+i)(x-a)\right)^{1-\gamma}\\
+&amp; =C_{1}a^{1-\gamma}+C_{2}\left(x-a\right)^{1-\gamma},
+\end{align*}\]</span></p>
+<p>donde <span class="math inline">\(C_{1}=\beta^{N-1}\)</span> y <span class="math inline">\(C_{2}=\beta^{N}(1+i)^{1-\gamma}K_{N}.\)</span> Como <span class="math inline">\(q\)</span> es continua en <span class="math inline">\(\left(x,a\right)\)</span>. Podemos calcular el máximo mediante el gradiente.</p>
+<p><span class="math display">\[
+\partial_{a}q=C_{1}\left(1-\gamma\right)a^{-\gamma}-C_{2}(1-\gamma)\left(x-a\right)^{-\gamma}.
+\]</span></p>
+<p>Igualando, <span class="math inline">\(\partial_{a}q=0\)</span>. <span class="math display">\[\begin{align*}
+C_{1}a^{-\gamma} &amp; =C_{2}\left(x-a\right)^{-\gamma}\\
+\dfrac{C_{1}}{C_{2}} &amp; =\left(\dfrac{x-a}{a}\right)^{-\gamma}\\
+\left(\dfrac{C_{1}}{C_{2}}\right)^{-\frac{1}{\gamma}} &amp; =\frac{x}{a}-1\\
+\left(\dfrac{C_{1}}{C_{2}}\right)^{-\frac{1}{\gamma}}+1 &amp; =\frac{x}{a}\\
+a &amp; =\dfrac{x}{\left(\dfrac{C_{1}}{C_{2}}\right)^{-\frac{1}{\gamma}}+1}
+\end{align*}\]</span></p>
+<p>Finalmente <span class="math display">\[
+a=h(x)=\dfrac{x}{\left(\beta(1+i)^{1-\gamma}\right)^{\frac{1}{\gamma}}+1}
+\]</span></p>
+<p>Definiendo <span class="math inline">\(\eta=\left(\beta(1+i)^{1-\gamma}\right)^{\frac{1}{\gamma}}+1,\)</span> <span class="math inline">\(\eta-1=\left(\beta(1+i)^{1-\gamma}\right)^{\frac{1}{\gamma}}\)</span></p>
+<p>entonces <span class="math display">\[
+h(x)=\dfrac{x}{\eta},
+\]</span></p>
+<p><span class="math display">\[\begin{align*}
+J_{N-1}(x) &amp; =\beta^{N-1}\left(\dfrac{x}{\eta}\right)^{1-\gamma}+\beta^{N}\left((1+i)\left(x-\dfrac{x}{\eta}\right)\right)^{1-\gamma}\\
+&amp; =\beta^{N-1}x^{1-\gamma}\left(\eta^{\gamma-1}+\beta\left(1+i\right)^{1-\gamma}\left(\dfrac{\eta-1}{\eta}\right)^{1-\gamma}\right)\\
+&amp; =\beta^{N-1}x^{1-\gamma}\eta^{\gamma-1}\left(1+\beta\left(1+i\right)^{1-\gamma}\left(\eta-1\right)^{1-\gamma}\right)\\
+&amp; =\beta^{N-1}x^{1-\gamma}\eta^{\gamma-1}\left(1+\beta\left(1+i\right)^{1-\gamma}\left(\eta-1\right)^{1-\gamma}\right)\\
+&amp; =\beta^{N-1}x^{1-\gamma}\eta^{\gamma-1}\left(1+\beta\left(1+i\right)^{1-\gamma}\left(\left(\beta(1+i)^{1-\gamma}\right)^{\frac{1}{\gamma}}\right)^{1-\gamma}\right)\\
+&amp; =\beta^{N-1}x^{1-\gamma}\eta^{\gamma-1}\left(1+\beta\left(1+i\right)^{1-\gamma}\left(\beta(1+i)^{1-\gamma}\right)^{\frac{1}{\gamma}-1}\right)\\
+&amp; =\beta^{N-1}x^{1-\gamma}\eta^{\gamma-1}\left(1+\beta^{\frac{1}{\gamma}}(1+i)^{\left(1-\gamma\right)\left(\frac{1}{\gamma}-1\right)+1-\gamma}\right)\\
+&amp; =\beta^{N-1}x^{1-\gamma}\eta^{\gamma-1}\left(1+\beta^{\frac{1}{\gamma}}(1+i)^{\left(\frac{1}{\gamma}-1\right)}\right)\\
+&amp; =\beta^{N-1}x^{1-\gamma}\eta^{\gamma},
+\end{align*}\]</span></p>
+<p>Entonces <span class="math display">\[
+K_{N-1}=\eta^{\gamma},h_{k-1}\left(x\right)=\dfrac{x}{\left(K_{N-1}\right)^{1/\gamma}}
+\]</span></p>
+<p>Ahora calculamos <span class="math inline">\(J_{N-2}\)</span></p>
+<p><span class="math display">\[\begin{align*}
+J_{N-2}\left(x\right) &amp; =\max_{a\in A\left(x\right)}\left\{ \beta^{N-2}a^{1-\gamma}+\beta^{N-1}\left[\left(1+i\right)\left(x-a\right)\right]^{1-\gamma}\eta^{\gamma}\right\} \\
+&amp; =\max_{a\in A\left(x\right)}\left\{ q\left(x,a\right)\right\} ,
+\end{align*}\]</span></p>
+<p>donde <span class="math display">\[
+q\left(x,a\right)=C_{1}a^{1-\gamma}+C_{2}\left(x-a\right)^{1-\gamma},
+\]</span></p>
+<p>con <span class="math inline">\(C_{1}=\beta^{N-2}\)</span> y <span class="math inline">\(C_{2}=\beta^{N-1}\left(1+i\right)^{1-\gamma}K_{N-1}\)</span> . Obteniendo, por recursividad <span class="math display">\[\begin{align*}
+h_{N-2} &amp; =\dfrac{x}{\left(\dfrac{C_{1}}{C_{2}}\right)^{-\frac{1}{\gamma}}+1}\\
+&amp; =\dfrac{x}{\left(\dfrac{1}{\beta\left(1+i\right)^{1-\gamma}K_{N-1}}\right)^{-\frac{1}{\gamma}}+1}\\
+&amp; =\dfrac{x}{\left(\beta\left(1+i\right)^{1-\gamma}K_{N-1}\right)^{\frac{1}{\gamma}}+1}
+\end{align*}\]</span></p>
+<p>Entonces, sea <span class="math display">\[\begin{align*}
+\eta' &amp; =\left(\beta\left(1+i\right)^{1-\gamma}K_{N-1}\right)^{\frac{1}{\gamma}}+1.
+\end{align*}\]</span></p>
+<p>Repitiendo, el caso anterior, tenemos que <span class="math display">\[\begin{align*}
+J_{N-2}\left(x\right) &amp; =\beta^{N-2}x^{1-\gamma}\eta_{'}^{\gamma-1}\left(1+K_{N-1}\beta\left(1+i\right)^{1-\gamma}\left(\left(\beta(1+i)^{1-\gamma}K_{N-1}\right)^{\frac{1}{\gamma}}\right)^{1-\gamma}\right)\\
+&amp; =\beta^{N-2}x^{1-\gamma}\eta_{'}^{\gamma-1}\left(1+K_{N-1}\beta\left(1+i\right)^{1-\gamma}\left(\left(\beta(1+i)^{1-\gamma}K_{N-1}\right)^{\frac{1}{\gamma}}\right)^{1-\gamma}\right)\\
+&amp; =\beta^{N-2}x^{1-\gamma}\eta_{'}^{\gamma-1}\left(1+K_{N-1}\beta\left(1+i\right)^{1-\gamma}\left(\beta(1+i)^{1-\gamma}K_{N-1}\right)^{\frac{1}{\gamma}-1}\right)\\
+&amp; =\beta^{N-2}x^{1-\gamma}\eta_{'}^{\gamma-1}\left(1+K_{N-1}\beta\left(1+i\right)^{1-\gamma}(1+i)^{\left(1-\gamma\right)\left(\frac{1}{\gamma}-1\right)}K_{N-1}^{\frac{1}{\gamma}-1}\right)\\
+&amp; =\beta^{N-2}x^{1-\gamma}\eta_{'}^{\gamma-1}\left(1+K_{N-1}\beta^{1/\gamma}\left(1+i\right)^{\frac{1}{\gamma}-1}K_{N-1}^{\frac{1}{\gamma}-1}\right)\\
+&amp; =\beta^{N-2}x^{1-\gamma}\eta_{'}^{\gamma-1}\left(1+\beta^{1/\gamma}\left(1+i\right)^{\frac{1}{\gamma}-1}K_{N-1}^{\frac{1}{\gamma}}\right)\\
+&amp; =\beta^{N-2}x^{1-\gamma}\eta'{}^{\gamma},
+\end{align*}\]</span></p>
+<p>entonces <span class="math display">\[
+K_{N-2}=\eta'{}^{\gamma},
+\]</span></p>
+<p>y <span class="math display">\[
+h_{N-2}=\dfrac{x}{K_{N-2}^{1/\gamma}}
+\]</span></p>
+<p>Por lo tanto, tenemos que <span class="math display">\[
+K_{n}=\left(\beta\left(1+i\right)^{1-\gamma}K_{n+1}\right)^{\frac{1}{\gamma}}+1,n=0,1,2,\ldots,N,
+\]</span> con <span class="math inline">\(K_{N}=1\)</span>.</p>
+<p>Obteniendo así <span class="math display">\[\begin{align*}
+J_{n}\left(x\right) &amp; =\beta^{n}x^{1-\gamma}K_{n}\\
+h_{n}\left(x\right) &amp; =\dfrac{x}{K_{n}^{1/\gamma}}
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="exr-5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.5 </strong></span>Consider now the infinite-horizon version of the above compsumption problem.</p>
 <ol type="1">
 <li>Write down the associated Bellman equation.</li>
 <li>Argue why a solution to the Bellman equation should be the form</li>
@@ -198,8 +290,55 @@ v(x) = cx^{1-\gamma},
 \]</span></p>
 <p>where <span class="math inline">\(c\)</span> is constant. Find the constant <span class="math inline">\(c\)</span> and the stationary optimal policy.</p>
 </div>
-<div class="{exr-6}">
-<p>Let <span class="math inline">\(\{\xi_k\}\)</span> be a dynamics of iid random variables such that <span class="math inline">\(E\left[\xi\right] = 0\)</span> and <span class="math inline">\(E\left[\xi^2\right] = d\)</span>. Consider the dynamics <span class="math display">\[
+<div id="sol-5">
+<p>Para el caso infinito. Estamos considerando <span class="math display">\[
+c\left(x,a\right)=a^{1-\gamma}
+\]</span></p>
+<p>Entonces <span class="math display">\[
+\nu\left(x\right)=\max_{a\in A\left(x\right)}\left\{ a^{1-\gamma}+\beta\nu\left(\left(1+i\right)\left(x-a\right)\right)\right\} ,
+\]</span></p>
+<p>considerando <span class="math inline">\(\nu\left(x\right)=cx^{1-\gamma}.\)</span> Entonces <span class="math display">\[
+\nu\left(x\right)=\max_{a\in A\left(x\right)}\left\{ a^{1-\gamma}+\beta c\left[\left(1+i\right)\left(x-a\right)\right]^{1-\gamma}\right\} ,
+\]</span></p>
+<p>definimos <span class="math display">\[
+q\left(x,a\right)=a^{1-\gamma}+\beta c\left[\left(1+i\right)\left(x-a\right)\right]^{1-\gamma},
+\]</span> entonces <span class="math display">\[
+\partial_{a}q=\left(1-\gamma\right)a^{-\gamma}+\beta c\left(1-\gamma\right)\left(1+i\right)^{1-\gamma}\left(-1\right)\left(x-a\right)^{-\gamma}.
+\]</span></p>
+<p>Si <span class="math inline">\(\partial_{a}q=0\)</span>. Entonces</p>
+<p><span class="math display">\[\begin{align*}
+a^{-\gamma} &amp; =\beta c\left(1+i\right)^{1-\gamma}\left(x-a\right)^{-\gamma}\\
+\left(\beta c\left(1+i\right)^{1-\gamma}\right)^{-1} &amp; =\left(\dfrac{x-a}{a}\right)^{-\gamma}\\
+\beta^{-1}c^{-1}\left(1+i\right)^{\gamma-1} &amp; =\left(\dfrac{x}{a}-1\right)^{-\gamma}\\
+\left[\beta^{-1}c^{-1}\left(1+i\right)^{\gamma-1}\right]^{-\frac{1}{\gamma}}+1 &amp; =\dfrac{x}{a}
+\end{align*}\]</span></p>
+<p>Por lo tanto <span class="math display">\[\begin{align*}
+a &amp; =\dfrac{x}{\left[\beta^{-1}c^{-1}\left(1+i\right)^{\gamma-1}\right]^{-\frac{1}{\gamma}}+1}\\
+&amp; =\dfrac{x}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}
+\end{align*}\]</span></p>
+<p>Ahora remplazamos en <span class="math inline">\(q\)</span> <span class="math display">\[\begin{align*}
+\nu\left(x\right) &amp; =\left(\dfrac{x}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}\right)^{1-\gamma}+\beta c\left[\left(1+i\right)\left(x-\dfrac{x}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}\right)\right]^{1-\gamma}\\
+&amp; =x^{1-\gamma}\left(\dfrac{1}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}\right)+x^{1-\gamma}\left(1+i\right)^{1-\gamma}\beta c\left(1-\dfrac{1}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}\right)^{1-\gamma}\\
+&amp; =x^{1-\gamma}\left[\left(\dfrac{1}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}\right)+\left(1+i\right)^{1-\gamma}\beta c\left(1-\dfrac{1}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}\right)^{1-\gamma}\right].
+\end{align*}\]</span> Entonces</p>
+<p><span class="math display">\[\begin{align*}
+c &amp; =\left(\dfrac{1}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}\right)^{1-\gamma}+\left(1+i\right)^{1-\gamma}\beta c\left(1-\dfrac{1}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}\right)^{1-\gamma}\\
+&amp; =\left(\dfrac{1}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}\right)^{1-\gamma}+\left(1+i\right)^{1-\gamma}\beta c\left(\dfrac{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}\right)^{1-\gamma}\\
+&amp; =\left(\dfrac{1}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}\right)^{1-\gamma}\left(1+\left(1+i\right)^{1-\gamma}\beta c\left(\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}\right)^{1-\gamma}\right)\\
+&amp; =\left(\dfrac{1}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}\right)^{1-\gamma}\left(1+\left(1+i\right)^{1-\gamma}\beta c\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}-1}\right)\\
+&amp; =\left(\dfrac{1}{\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1}\right)^{1-\gamma}\left(1+\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}\right)\\
+&amp; =\left(\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1\right)^{\gamma-1}\left(1+\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}\right)\\
+c &amp; =\left(\left[\beta c\left(1+i\right)^{1-\gamma}\right]^{\frac{1}{\gamma}}+1\right)^{\gamma}
+\end{align*}\]</span></p>
+<p>Ahora, nos queda despejar <span class="math inline">\(c\)</span>. <span class="math display">\[\begin{align*}
+c^{\frac{1}{\gamma}} &amp; =\beta^{\frac{1}{\gamma}}c^{\frac{1}{\gamma}}\left(1+i\right)^{\frac{1}{\gamma}-1}+1\\
+1 &amp; =\beta^{\frac{1}{\gamma}}\left(1+i\right)^{\frac{1}{\gamma}-1}+c^{-\frac{1}{\gamma}}\\
+c^{-\frac{1}{\gamma}} &amp; =1-\beta^{\frac{1}{\gamma}}\left(1+i\right)^{\frac{1}{\gamma}-1}\\
+c &amp; =\left(1-\beta^{\frac{1}{\gamma}}\left(1+i\right)^{\frac{1}{\gamma}-1}\right)^{-\gamma}
+\end{align*}\]</span></p>
+</div>
+<div id="exr-6" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.6 </strong></span>Let <span class="math inline">\(\{\xi_k\}\)</span> be a dynamics of iid random variables such that <span class="math inline">\(E\left[\xi\right] = 0\)</span> and <span class="math inline">\(E\left[\xi^2\right] = d\)</span>. Consider the dynamics <span class="math display">\[
 x_{k+1} = x_k + a_k + \xi_k, k = 0,1,2,\ldots,
 \]</span></p>
 <p>and the discounted cost <span class="math display">\[
@@ -211,6 +350,58 @@ E\left[ \sum \beta^k \left(a^2_k + x_k^2\right)\right]
 <li>Determine the constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</li>
 <li>Conjecture that the solution to the Bellman equation takes the form <span class="math inline">\(v(x) = ax^2 + b\)</span>, where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constant. Determine the constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</li>
 </ol>
+</div>
+<div id="sol-6">
+<p><span class="math display">\[\begin{align*}
+\nu\left(x\right) &amp; =\max_{a\in A\left(x\right)}\left\{ c\left(x,a\right)+\nu\left(f\left(x,a\right)\right)\right\} \\
+&amp; =\max_{a\in A\left(x\right)}\left\{ a^{2}+x^{2}+E\left[\nu\left(x+a+\xi\right)\right]\right\}
+\end{align*}\]</span></p>
+<p>Para <span class="math inline">\(\nu\left(x\right)=ax^{2}+b\)</span></p>
+<p><span class="math display">\[\begin{align*}
+\nu\left(x\right) &amp; =\max_{a\in A\left(x\right)}\left\{ c\left(x,a\right)+\beta E\left[\nu\left(f\left(x,a\right)\right)\right]\right\} \\
+&amp; =\max_{a\in A\left(x\right)}\left\{ A^{2}+x^{2}+\beta\left(E\left[a\left(f^{2}\left(x,a\right)\right)\right]+b\right)\right\} \\
+&amp; =\max_{a\in A\left(x\right)}\left\{ A^{2}+x^{2}+\beta\left(aE\left[f^{2}\left(x,a\right)\right]+b\right)\right\}
+\end{align*}\]</span></p>
+<p>Notemos que <span class="math display">\[\begin{align*}
+E\left[f^{2}\left(x,A\right)\right] &amp; =E\left[\left(x+A+\xi\right)^{2}\right]\\
+&amp; =E\left[x^{2}+A^{2}+\xi^{2}+2xA+2x\xi+2\xi A\right]\\
+&amp; =x^{2}+A^{2}+E\left[\xi^{2}\right]+2xA+2xE\left[\xi\right]+2AE\left[\xi\right]\\
+&amp; =x^{2}+A^{2}+d+2xA
+\end{align*}\]</span></p>
+<p>Entonces <span class="math display">\[\begin{align*}
+ax^{2}+b &amp; =\max_{a\in A\left(x\right)}\left\{ A^{2}+x^{2}+\beta\left[a\left(x^{2}+A^{2}+d+2xA\right)+b\right]\right\} \\
+&amp; =\max_{a\in A\left(x\right)}\left\{ A^{2}+x^{2}+\beta a\left(x^{2}+A^{2}+d+2xA\right)+\beta b\right\} \\
+&amp; =\max_{a\in A\left(x\right)}\left\{ A^{2}+x^{2}+\beta ax^{2}+\beta aA^{2}+\beta ad+2\beta axA+\beta b\right\} \\
+&amp; =\max_{a\in A\left(x\right)}\left\{ A^{2}\left(\beta a+1\right)+2\beta axA+x^{2}+\beta ax^{2}+\beta ad+\beta b\right\}
+\end{align*}\]</span></p>
+<p>Definimos <span class="math display">\[
+w\left(x,A\right)=A^{2}\left(\beta a+1\right)+2\beta axA+x^{2}+\beta ax^{2}+\beta ad+\beta b,
+\]</span></p>
+<p>entonces <span class="math display">\[
+\partial_{A}w=2A\left(\beta a+1\right)+2\beta ax.
+\]</span></p>
+<p>Si <span class="math inline">\(\partial_{A}w=0\)</span>, entonces <span class="math display">\[
+A=-\dfrac{\beta ax}{\beta a+1}
+\]</span></p>
+<p>Entonces <span class="math display">\[\begin{align*}
+\nu\left(x\right) &amp; =\left(\beta ax\right)^{2}-2\dfrac{\left(\beta ax\right)^{2}}{\beta a+1}+x^{2}+\beta ax^{2}+\beta ad+\beta b\\
+&amp; =x^{2}\left(\left[\beta a\right]^{2}-2\dfrac{\left(\beta a\right)^{2}}{\beta a+1}+1+\beta a\right)+\beta ad+\beta b
+\end{align*}\]</span></p>
+<p>Entonces <span class="math display">\[\begin{align*}
+a &amp; =\left[\beta a\right]^{2}-2\dfrac{\left(\beta a\right)^{2}}{\beta a+1}+1+\beta a\\
+b &amp; =\beta ad+\beta b,
+\end{align*}\]</span> de forma rapida</p>
+<p><span class="math display">\[
+b=\dfrac{\beta ad}{1-\beta},
+\]</span> entonces queda pendiente calcular <span class="math inline">\(a\)</span></p>
+<p><span class="math display">\[\begin{align*}
+a &amp; =\left[\beta a\right]^{2}-2\dfrac{\left(\beta a\right)^{2}}{\beta a+1}+1+\beta a.\\
+0 &amp; =\left(\beta a\right)^{2}\left(1-\dfrac{2}{\beta a+1}\right)+1+\left(\beta-1\right)a\\
+&amp; =\left(\beta a\right)^{2}\left(\beta a+1-2\right)+\beta a+1+\left(a\beta-a\right)\left(\beta a+1\right)\\
+&amp; =\left(\beta a\right)^{2}\left(\beta a-1\right)+\beta a+1+\left[\left(a\beta\right)^{2}+a\beta-\beta a^{2}-a\right]\\
+&amp; =\left(\beta a\right)^{3}+2a\beta+1-\beta a^{2}-a\\
+&amp; =\beta^{3}a^{3}-\beta a^{2}+\left(2\beta-1\right)a+1
+\end{align*}\]</span></p>
 </div>
 
 
