@@ -38,6 +38,40 @@ Form (see Sutton and Barto 2018, sec. 1.7) obtain a time line pear year from 195
 
 
 
+```{r}
+library(devtools)
+library(milestones)
+
+library(tidyverse)
+library(gt)
+
+library(bibtex)
+## Activate the Core Packages
+biblio <- bibtex::read.bib("references.bib")
+
+## Initialize defaults
+column <- lolli_styles()
+
+data <- read_csv(col_names=TRUE, show_col_types=FALSE, file='rl_time_line.csv')
+
+
+data <- data |> arrange(date)
+
+## Build a table
+gt(data) |>
+  #cols_hide(columns = event) |>
+  tab_style(cell_text(v_align = "top"),
+            locations = cells_body(columns = date)) |>
+  tab_source_note(source_note = "Source: Sutton and Barto (2018)") 
+
+column$color <- "orange"
+column$size  <- 15
+column$source_info <- "Source: Sutton and Barto (2018)"
+
+## Milestones timeline
+milestones(datatable = data, styles = column)
+```
+
 
 
 
@@ -199,13 +233,12 @@ K_{n}=\left(\beta\left(1+i\right)^{1-\gamma}K_{n+1}\right)^{\frac{1}{\gamma}}+1,
 $$
 con $K_{N}=1$. 
 
+
 Obteniendo así 
 \begin{align*}
 J_{n}\left(x\right) & =\beta^{n}x^{1-\gamma}K_{n}\\
 h_{n}\left(x\right) & =\dfrac{x}{K_{n}^{1/\gamma}}
 \end{align*}
-
-
 
 :::
 
@@ -311,8 +344,6 @@ c^{-\frac{1}{\gamma}} & =1-\beta^{\frac{1}{\gamma}}\left(1+i\right)^{\frac{1}{\g
 c & =\left(1-\beta^{\frac{1}{\gamma}}\left(1+i\right)^{\frac{1}{\gamma}-1}\right)^{-\gamma}
 \end{align*}
 
-
-
 :::
 
 
@@ -345,7 +376,7 @@ $$
 
 
 \begin{align*}
-\nu\left(x\right) & =\max_{a\in A\left(x\right)}\left\{ c\left(x,a\right)+\nu\left(f\left(x,a\right)\right)\right\} \\
+\nu\left(x\right) & =\max_{a\in A\left(x\right)}\left\{ c\left(x,a\right)+E\left[\nu\left(f\left(x,a\right)\right)\right]\right\} \\
  & =\max_{a\in A\left(x\right)}\left\{ a^{2}+x^{2}+E\left[\nu\left(x+a+\xi\right)\right]\right\} 
 \end{align*}
 
@@ -415,4 +446,5 @@ a & =\left[\beta a\right]^{2}-2\dfrac{\left(\beta a\right)^{2}}{\beta a+1}+1+\be
  & =\beta^{3}a^{3}-\beta a^{2}+\left(2\beta-1\right)a+1
 \end{align*}
 
+Concluyendo que la constante $b$ depende de $a$ y $a$ es una solución, dependiente de $\beta$, de la ecuación cúbica que 
 :::

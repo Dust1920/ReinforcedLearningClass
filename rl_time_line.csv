@@ -1,0 +1,24 @@
+date, event, reference
+1950,"""optimal control"" term","MR0090477 Bellman, Richard Dynamic programming. Princeton University Press, Princeton, NJ, 1957. xxv+342 pp."
+1957,Dynamic Programming,"MR0090477 Bellman, Richard Dynamic programming. Princeton University Press, Princeton, NJ, 1957. xxv+342 pp."
+1957,Markovian Decision Processes,"MR0091859 Bellman, Richard A Markovian decision process.J. Math. Mech.6(1957), 679–684."
+1960,Policy iteration method,Ron Howard (1960)
+1991,Partially Observable MDPs,"MR1105166 Lovejoy, William S.A survey of algorithmic methods for partially observed Markov decision processes.Ann. Oper. Res.28(1991), no.1-4, 47–65"
+1985,Many Aplications,"MR1295629 White, D. J. Markov decision processes.John Wiley & Sons, Ltd., Chichester, 1993. xiv+224 pp. ISBN:0-471-93627-8"
+1988,Many Aplications,"MR1295629 White, D. J. Markov decision processes.John Wiley & Sons, Ltd., Chichester, 1993. xiv+224 pp. ISBN:0-471-93627-8"
+1993,Many Aplications,"MR1200993 White, D. J.Markov decision processes: discounted expected reward or average expected reward?.J. Math. Anal. Appl.172(1993), no.2, 375–384."
+1996,Aproximathon methods,"MR1416619 Rust, John Numerical dynamic programming in economics.Handbook of computational economics, Vol. I, 619–729. Handbooks in Econom., 13 North-Holland Publishing Co., Amsterdam, 1996 ISBN:0-444-89857-3"
+1982,Asynchronous methods,"Bertsekas, 1982"
+1983,Asynchronous methods,"MR0712113 Bertsekas, Dimitri P. Distributed asynchronous computation of fixed points.Math. Programming27(1983), no.1, 107–120."
+1995,Modern Dynamic Programming,"Bertsekas, 1995"
+1994,Modern Dynamic Programming,"Puterman, 1994"
+1983,Modern Dynamic Programming,"MR0749232 Ross, Sheldon Introduction to stochastic dynamic programming. Probab. Math. Statist. Academic Press, Inc. [Harcourt Brace Jovanovich, Publishers], New York, 1983. xi+164 pp. ISBN:0-12-598420-0"
+1982,Modern Dynamic Programming,White 1982
+1983,Modern Dynamic Programming,White 1983
+1911,The Law Effect,"Thorndike, 1911"
+1954,Trial and Error Learning,"Minsky,Farley, Clark 1954"
+1960,"""Reinforcement"" and ""R. Learning"" terms",
+1961,Steps Toward Artificial Inteligence,"Minsky, 1961"
+1968,GLEE and BOXES,Michie and Chambers 1968
+1963,Tic Tac Toe,"Donald Michie, 1961"
+1960,Learning with a critic,"Hoff, 1960"
