@@ -1,5 +1,33 @@
+---
+lang: es
+---
+
+
 # Preface {.unnumbered}
 
 This is a Quarto book.
 
 To learn more about Quarto books visit <https://quarto.org/docs/books>.
+
+
+$$
+x^2 + 10 = 100
+$$ {#eq-equation2}
+
+Prueba @eq-equation2
+
+
+Referencia ejemplo @AustraliaCCN
+Referencia ejemplo [see @AustraliaCCN, pp. 52-53; @CalVar, cap.1]
+
+
+Black-Scholes (@eq-black-scholes) is a mathematical model that seeks to explain the behavior of financial derivatives, most commonly options:
+
+$$
+\frac{\partial \mathrm C}{ \partial \mathrm t } + \frac{1}{2}\sigma^{2} \mathrm S^{2}
+\frac{\partial^{2} \mathrm C}{\partial \mathrm C^2}
+  + \mathrm r \mathrm S \frac{\partial \mathrm C}{\partial \mathrm S}\ =
+  \mathrm r \mathrm C 
+$$ {#eq-black-scholes}
+
+

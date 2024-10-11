@@ -45,9 +45,9 @@ library(milestones)
 library(tidyverse)
 library(gt)
 
-library(bibtex)
+#library(bibtex)
 ## Activate the Core Packages
-biblio <- bibtex::read.bib("references.bib")
+#biblio <- bibtex::read.bib("references.bib")
 
 ## Initialize defaults
 column <- lolli_styles()
