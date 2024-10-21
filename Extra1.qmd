@@ -9,36 +9,37 @@ v_{\pi}\left(s\right) & =E_{\pi}\left[G_{t}\mid S_{t}=s\right]\\
  & =\sum_{a}\pi\left(a\mid s\right)\sum_{s',r}p\left(s^{'},r\mid s,a\right)\left[r+\gamma v_{\pi}\left(s'\right)\right]
 \end{align*}
 
-Queremos calcular $v_{\pi}\left(s\right)$ donde $s_{0}=\left(2,2\right)$
+Queremos calcular $v_{\pi}\left(s_0\right)$ donde $s_{0}=\left(2,2\right)$
 Considerando el $\left(0,0\right)$ la esquina superior izquierda.
 Comenzaremos revisando $p\left(s^{'},r\mid s,a\right)$. Notemos que
 en Gridword solo son posibles las recompensas $[-1,0,5,10]$ según
-la posición actual y la acción $a$. Para nuestro caso, $s_{0}$ 
-\[
+la posición actual y la acción $a$. Para nuestro caso, $s= s_{0}$ 
+$$
 p\left(s',r\mid s_{0},a\right)=0,r\in[-1,5,10],\forall a,\forall s'.
-\]
+$$
 
 Por lo anterior la ecuación de Bellman queda como sigue 
-\[
+$$
 v_{\pi}\left(s\right)=\sum_{a}\pi\left(a\mid s\right)\sum_{s'}p\left(s^{'},0\mid s_{0},a\right)\left[\gamma v_{\pi}\left(s'\right)\right].
-\]
+$$
 
 Definamos la función auxiliar 
-\[
+$$
 g\left(a\right)=\sum_{s'}p\left(s^{'},0\mid s_{0},a\right)\left[\gamma v_{\pi}\left(s'\right)\right].
-\]
+$$
 
 Para $s=s_{0}$ y $a$ fijo. 
-\[
+$$
 g\left(a\right)=\gamma v_{\pi}\left(s'\right),
-\]
+$$
 
 donde $s'$ satisface $\mathcal{P}\left(s'\mid s,a\right)=1$. Para
 el ejercicio, $v_{\pi}\left(s'\right)$ estan dadas para $s'=\left(1,2\right),s'=\left(2,1\right),s'=\left(2,3\right),s'=\left(3,2\right)$,
-y estamos suponiendo una distribución uniforme en $\pi$, entonces
-\[
+y estamos suponiendo una distribución uniforme en $\pi$. Por lo tanto,
+
+$$
 \pi\left(a\mid s\right)=\dfrac{1}{4},\forall s.
-\]
+$$
 
 Finalmente, 
 

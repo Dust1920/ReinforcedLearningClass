@@ -9,6 +9,7 @@ book:
     - index.qmd
     - Tarea1.qmd
     - Tarea2.qmd
+    - Extra1.qmd
     - references.qmd
 
 bibliography: references.bib
