@@ -172,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
 v_{\pi}\left(s\right) &amp; =E_{\pi}\left[G_{t}\mid S_{t}=s\right]\\
 &amp; =\sum_{a}\pi\left(a\mid s\right)\sum_{s',r}p\left(s^{'},r\mid s,a\right)\left[r+\gamma v_{\pi}\left(s'\right)\right]
 \end{align*}\]</span></p>
-<p>Queremos calcular <span class="math inline">\(v_{\pi}\left(s\right)\)</span> donde <span class="math inline">\(s_{0}=\left(2,2\right)\)</span> Considerando el <span class="math inline">\(\left(0,0\right)\)</span> la esquina superior izquierda. Comenzaremos revisando <span class="math inline">\(p\left(s^{'},r\mid s,a\right)\)</span>. Notemos que en Gridword solo son posibles las recompensas <span class="math inline">\([-1,0,5,10]\)</span> según la posición actual y la acción <span class="math inline">\(a\)</span>. Para nuestro caso, <span class="math inline">\(s_{0}\)</span> <span class="math display">\[
+<p>Queremos calcular <span class="math inline">\(v_{\pi}\left(s_0\right)\)</span> donde <span class="math inline">\(s_{0}=\left(2,2\right)\)</span> Considerando el <span class="math inline">\(\left(0,0\right)\)</span> la esquina superior izquierda. Comenzaremos revisando <span class="math inline">\(p\left(s^{'},r\mid s,a\right)\)</span>. Notemos que en Gridword solo son posibles las recompensas <span class="math inline">\([-1,0,5,10]\)</span> según la posición actual y la acción <span class="math inline">\(a\)</span>. Para nuestro caso, <span class="math inline">\(s= s_{0}\)</span> <span class="math display">\[
 p\left(s',r\mid s_{0},a\right)=0,r\in[-1,5,10],\forall a,\forall s'.
 \]</span></p>
 <p>Por lo anterior la ecuación de Bellman queda como sigue <span class="math display">\[
@@ -184,7 +184,7 @@ g\left(a\right)=\sum_{s'}p\left(s^{'},0\mid s_{0},a\right)\left[\gamma v_{\pi}\l
 <p>Para <span class="math inline">\(s=s_{0}\)</span> y <span class="math inline">\(a\)</span> fijo. <span class="math display">\[
 g\left(a\right)=\gamma v_{\pi}\left(s'\right),
 \]</span></p>
-<p>donde <span class="math inline">\(s'\)</span> satisface <span class="math inline">\(\mathcal{P}\left(s'\mid s,a\right)=1\)</span>. Para el ejercicio, <span class="math inline">\(v_{\pi}\left(s'\right)\)</span> estan dadas para <span class="math inline">\(s'=\left(1,2\right),s'=\left(2,1\right),s'=\left(2,3\right),s'=\left(3,2\right)\)</span>, y estamos suponiendo una distribución uniforme en <span class="math inline">\(\pi\)</span>, entonces</p>
+<p>donde <span class="math inline">\(s'\)</span> satisface <span class="math inline">\(\mathcal{P}\left(s'\mid s,a\right)=1\)</span>. Para el ejercicio, <span class="math inline">\(v_{\pi}\left(s'\right)\)</span> estan dadas para <span class="math inline">\(s'=\left(1,2\right),s'=\left(2,1\right),s'=\left(2,3\right),s'=\left(3,2\right)\)</span>, y estamos suponiendo una distribución uniforme en <span class="math inline">\(\pi\)</span>. Por lo tanto,</p>
 <p><span class="math display">\[
 \pi\left(a\mid s\right)=\dfrac{1}{4},\forall s.
 \]</span></p>
