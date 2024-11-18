@@ -21,6 +21,41 @@
     "text": "3.1 Verificar la ecuación de Bellman para el problema de GridWorld de la casilla \\(s = (2,2)\\)\nPor la ecuación de Bellman.\n\\[\\begin{align*}\nv_{\\pi}\\left(s\\right) & =E_{\\pi}\\left[G_{t}\\mid S_{t}=s\\right]\\\\\n& =\\sum_{a}\\pi\\left(a\\mid s\\right)\\sum_{s',r}p\\left(s^{'},r\\mid s,a\\right)\\left[r+\\gamma v_{\\pi}\\left(s'\\right)\\right]\n\\end{align*}\\]\nQueremos calcular \\(v_{\\pi}\\left(s_0\\right)\\) donde \\(s_{0}=\\left(2,2\\right)\\) Considerando el \\(\\left(0,0\\right)\\) la esquina superior izquierda. Comenzaremos revisando \\(p\\left(s^{'},r\\mid s,a\\right)\\). Notemos que en Gridword solo son posibles las recompensas \\(\\{-1,0,5,10\\}\\) según la posición actual y la acción \\(a\\). Para nuestro caso, \\(s= s_{0}\\) \\[\np\\left(s',r\\mid s_{0},a\\right)=0,r\\in\\{-1,5,10\\},\\forall a,\\forall s'.\n\\]\nPor lo anterior la ecuación de Bellman queda como sigue \\[\nv_{\\pi}\\left(s\\right)=\\sum_{a}\\pi\\left(a\\mid s\\right)\\sum_{s'}p\\left(s^{'},0\\mid s_{0},a\\right)\\left[\\gamma v_{\\pi}\\left(s'\\right)\\right].\n\\]\nDefinamos la función auxiliar \\[\ng\\left(a\\right)=\\sum_{s'}p\\left(s^{'},0\\mid s_{0},a\\right)\\left[\\gamma v_{\\pi}\\left(s'\\right)\\right].\n\\]\nPara \\(s=s_{0}\\) y \\(a\\) fijo. \\[\ng\\left(a\\right)=\\gamma v_{\\pi}\\left(s'\\right),\n\\]\ndonde \\(s'\\) satisface \\(\\mathcal{P}\\left(s'\\mid s,a\\right)=1\\). Para el ejercicio, \\(v_{\\pi}\\left(s'\\right)\\) estan dadas para \\(s'=\\left(1,2\\right),s'=\\left(2,1\\right),s'=\\left(2,3\\right),s'=\\left(3,2\\right)\\), y estamos suponiendo una distribución uniforme en \\(\\pi\\). Por lo tanto,\n\\[\n\\pi\\left(a\\mid s\\right)=\\dfrac{1}{4},\\forall s.\n\\]\nFinalmente,\n\\[\\begin{align*}\nv_{\\pi}\\left(s\\right) & =\\dfrac{1}{4}\\left(\\gamma\\left(2.3+0.7+0.4-0.4\\right)\\right)\\\\\n& =\\dfrac{3}{4}\\gamma\\approx0.7\n\\end{align*}\\]"
   },
   {
+    "objectID": "Proyecto.html#introducción",
+    "href": "Proyecto.html#introducción",
+    "title": "4  Proyecto: Manejo de Inventario",
+    "section": "4.1 Introducción",
+    "text": "4.1 Introducción\nDentro del area del Control Estocástico, una de los problemas más conocidos son los problemas de inventario. Donde se presenta una bodega con capacidad máxima \\(K\\). Cada estapa se extrae una cantidad de mercancía, la que denotaremos como la demanda \\(D_t\\), y se solicita una cantidad del producto \\(a_t\\), obteniendo finalmente el nivel de inventario \\(X_t\\). En general se busca minimizar los costos de la bodega (costos por almacenamiento, costos por pérdida, entre otros)."
+  },
+  {
+    "objectID": "Proyecto.html#formulación-del-proceso-de-decisión-de-markov.",
+    "href": "Proyecto.html#formulación-del-proceso-de-decisión-de-markov.",
+    "title": "4  Proyecto: Manejo de Inventario",
+    "section": "4.2 Formulación del Proceso de Decisión de Markov.",
+    "text": "4.2 Formulación del Proceso de Decisión de Markov.\nPara nuestro problema consideraremos un supermercado, centrado en uno de sus pasillos. Suponiendo que en un pasillo se almacena un solo tipo de producto. Definiremos a \\(K\\) la cantidad máxima de producto en el pasillo, \\(X_t\\) a la cantidad del producto disponible para la venta (o la cantidad de producto en el pasillo). Nuestra demanda, o producto solicitado, será denotado por \\(D_t\\) y se considerará una colección de v.a i.i.d. Finalmente, la cantidad recolocada en el pasillo, o producto pedido, será denotada por \\(a_t\\). Entonces, nuestro conjunto de estados \\(\\mathcal{S}\\) está dado por el siguiente conjunto\n\\[\n    \\mathcal{S} = \\{s\\in \\mathbb{Z}^+:0\\leq s\\leq K\\}.\n\\tag{4.1}\\]\nNuestro conjunto de acciones \\(\\mathcal{A} = \\mathcal{S} = \\mathbb{Z}^+\\), y para \\(x\\in\\mathcal{S}\\) nuestro conjunto de acciones admisibles esta dado por\n\\[\n    \\mathcal{A}(x)=\\{a\\in \\mathcal{A}:0 \\leq a\\leq K - x\\}.\n\\]"
+  },
+  {
+    "objectID": "Proyecto.html#dinámica-del-modelo.",
+    "href": "Proyecto.html#dinámica-del-modelo.",
+    "title": "4  Proyecto: Manejo de Inventario",
+    "section": "4.3 Dinámica del Modelo.",
+    "text": "4.3 Dinámica del Modelo.\nRecordando la fórmula para nuestro modelo.\n\\[\n    X_{t+1} = f(X_t, a_t), f:\\mathcal{S}\\times \\mathcal{A}\\to \\mathcal{S}.\n\\]\nEntonces el modelo que usaremos esta dado por\n\\[\n    X_{t+1} = (X_t+a_t-\\eta X_{t} - D_{t+1})^+,\n\\tag{4.2}\\]\ndonde \\(a_t\\) es la cantidad de producto recolodado al final del dia \\(t\\), \\(\\eta\\) es el factor descomposición, \\(D_t\\) es la demanda del prodcucto en la dia \\(t\\) y \\((\\cdot)^+ = \\max\\{\\cdot, 0\\}\\)."
+  },
+  {
+    "objectID": "Proyecto.html#descripción-y-justificación-del-modelo.",
+    "href": "Proyecto.html#descripción-y-justificación-del-modelo.",
+    "title": "4  Proyecto: Manejo de Inventario",
+    "section": "4.4 Descripción y Justificación del Modelo.",
+    "text": "4.4 Descripción y Justificación del Modelo.\nEl modelo Equation 4.2 pretende responder a la pregunta que denota el modelo ¿Cuánto producto tendré disponible al dia siguiente?. Lo anterior menciona que nuestras etapas \\(t\\in \\mathcal{T} = \\{t\\in \\mathbb{Z}^+: t\\leq T,T\\in \\mathbb{N}\\}\\) representaran los dias dentro de un periodo \\(T\\), \\(t\\) hace referencia al dia actual, y \\(t+1\\) al dia siguiente. Entonces el modelo general esta dado por\n\\[\n    X_{t+1} = (\\text{Today} + \\text{In}_t - \\text{Out}_{t+1})^+.\n\\]\nEsto es, la parte positiva del producto que hay “hoy”, es decir, \\(X_t\\). A eso le agregaremos el producto que entrará hoy al final del dia, en nuestro modelo solo habrá ingreso de producto mediante solicitud (En este caso no consideramos un almacenimiento dentro del supermercado), entonces \\(\\text{In}_t\\) esta dado por nuestras acciones \\(\\text{In}_t = a_t\\).\nLa parte que saldrá consta de dos elementos. En general consideramos la cantidad de producto que se compró en el dia \\(t\\). Sin embargo, desconocemos la cantidad requerida, haciendo referencia al dia siguiente. Por lo tanto la demanda está representada por \\(D_{t+1}\\), la cantidad de producto requerida al dia siguiente. En nuestro modelo también consideramos la salida de producto por considerarse producto no apto para la venta. Entonces\n\\[\n    \\text{Out}_t = D_{t + 1} + N_t(X_t).\n\\]\nBajo de la suposición que todos los productos poseen el mismo tiempo de vida con periodos de vida distintos supondremos que cada dia, al final, se retira un factor con respecto a la cantidad actual de producto. \\[\n    N_t = \\eta X_t\n\\]\n\\[\n    \\text{Out}_t = D_{t + 1} + \\eta X_t\n\\]\nFinalmente, nos queda definir la función de costo, en nuestro modelo será la ganancia. Al considerar un periodo finito tenemos que la ganancia total \\(G\\) esta dada por\n\\[\n    G(x_0, \\pi) = \\sum_{t=0}^{T} G_t(X_t, a_t),X_0 = x_0, X_{t+1} = f(X_t, a_t).\n\\]\ndonde \\(\\pi\\) es una politica, \\(\\pi = (a_0,a_1, \\ldots, a_{N-1})\\). y \\(G_t\\) es la ganancia por etapa, en nuestro caso \\[\n    G_t(x,a) = P_V \\min\\{x + a, D_t\\} - P_S (a - \\mathcal{I}_{t = 0}x),\n\\]\nnotemos que en el dia \\(a = 0\\) y \\(D_0 = 0\\), entonces \\(G_0(x,a) = -P_Sx\\) donde \\(C\\) es el costo unitario por tener el producto al inicio. Notemos que \\(D_t\\) es una variable aleatoria, entonces la función de valor por estado es la siguiente\n\\[\n    V^\\pi(s) =  E[G(s, \\pi)]\n\\]\nTeniendo que la ecuación de Bellman para nuestra función de valor es \\[\n    V^\\pi(s) = \\sum_{a}\\pi(a\\mid s)\\sum_{s'} \\mathcal{P}[s' \\mid s, a][R(s', a, s) + \\gamma V^\\pi(s')]\n\\]"
+  },
+  {
+    "objectID": "Proyecto.html#justificación-de-las-acciones.",
+    "href": "Proyecto.html#justificación-de-las-acciones.",
+    "title": "4  Proyecto: Manejo de Inventario",
+    "section": "4.5 Justificación de las acciones.",
+    "text": "4.5 Justificación de las acciones.\nYa comentamos que nuestras acciones, será la cantidad de producto que vamos a solicitar. Entonces nuestras acciones serán números enteros y las acciones serán ejecutadas de forma instantea, al momento."
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "References",
