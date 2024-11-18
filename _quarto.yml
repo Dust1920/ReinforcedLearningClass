@@ -10,6 +10,7 @@ book:
     - Tarea1.qmd
     - Tarea2.qmd
     - Extra1.qmd
+    - Proyecto.qmd
     - references.qmd
 
 bibliography: references.bib
