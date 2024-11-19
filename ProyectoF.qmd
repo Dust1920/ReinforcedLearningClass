@@ -1,0 +1,69 @@
+# Simulac           ión de Inventario. 
+Despues de haber revisado la idea principal del modelo. Vamos usar herramientas de Aprendizaje Reforzado para 
+encontrar la recompensa máxima que podemos obtener. 
+
+## Librerias
+Primero importaremos las librerias 
+
+```{python}
+import numpy as np
+import pandas as pd
+import scipy.stats
+import matplotlib.pyplot as plt
+
+
+def demmand(p = 0.1):
+    s = np.random.geometric(p)
+    return s
+
+
+def benefit(x, a, d, ic, pv = 10, ps = 5):
+    init_cost = 1 if ic else 0
+    in_money = pv * min(x + a, d)
+    out_money = ps * (a + ic)
+    g = in_money - out_money
+    return g
+
+
+def model(x, a, d, eta):
+    in_prod = x + a
+    out_prod = np.ceil(eta* x) + d
+    xp1 = in_prod - out_prod
+    xp1 = max(xp1, 0) 
+    return xp1
+
+
+ETA = 0.1
+MAX_CAP = 200
+INIT_VALUE = 200
+NDAYS = 100
+inventory_h = [INIT_VALUE]
+actions_h = []
+benefit_h = []
+
+x = inventory_h[0]
+for i in range(NDAYS):
+    ic = 1 if i == 0 else 0
+    D = demmand()
+    a = 15
+    if x + a > MAX_CAP:
+        a = MAX_CAP - x
+    xp1 = model(x, a, D, ETA)
+    x = xp1
+    b = benefit(xp1, a, D, ic)
+    benefit_h.append(b)
+    actions_h.append(a)
+    inventory_h.append(xp1)
+
+print(benefit_h)
+bh = np.array(benefit_h)
+print(bh.cumsum()[-1])
+print(actions_h)
+print(inventory_h)
+
+sample, ax = plt.subplots()
+ax.plot(inventory_h)
+
+plt.show()
+
+```
